@@ -1,6 +1,7 @@
 const menuOpenHandler = document.getElementById("menu-icon-open");
 const menuCloseHandler = document.getElementById("menu-icon-close");
 const menu = document.getElementById("menu");
+const toTopHendler = document.getElementById("to-top");
 
 menuOpenHandler.addEventListener("click", () => {
     menuOpenHandler.style.display = "none";
@@ -18,3 +19,15 @@ menuCloseHandler.addEventListener("click", () => {
     menuOpenHandler.style.display = "block";
     // menuOpen.style.animation = 'backInLeft .6s cubic-bezier(0.5, 0, 0.5, 1) '
 });
+
+document.addEventListener("scroll", (event) => {
+    if (
+      document.body.scrollTop > 120 ||
+      document.documentElement.scrollTop > 120
+    ) {
+      toTopHendler.style.display = "block";
+    } else {
+      toTopHendler.style.display = "none";
+    }
+  });
+  
