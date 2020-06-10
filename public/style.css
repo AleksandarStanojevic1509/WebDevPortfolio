@@ -49,11 +49,7 @@ body {
   color: var(--main-color4);
   font-weight: 900;
   padding: 5px 0;
-  /* -webkit-text-stroke: 0.07rem var(--main-color4) !important;
-  -webkit-box-shadow: 10px 10px 21px -13px rgba(42,98,87,1);
-  -moz-box-shadow: 10px 10px 21px -13px rgba(42,98,87,1);
-  box-shadow: 10px 10px 21px -13px rgba(42,98,87,1); */
-}
+} 
 
 .flex-main {
   display: flex;
@@ -305,8 +301,32 @@ h4 {
   color: var(--main-color1);
   cursor: pointer;
 -webkit-text-stroke: 0.07rem var(--main-color4) !important;
-
 }
+
+
+/* ABOUT BOX */
+
+
+#about-me-box, #contact-me-box{
+  position: absolute;
+  z-index: 99;  
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--main-color3);
+}
+
+.fa-reply{
+  position: absolute;
+  color: var(--main-color2);
+  -webkit-text-stroke: 3px var(--main-color1) !important;
+  font-size: 3rem;
+  margin: 1rem ;
+}
+.fa-reply:hover{
+  animation: heartBeat 3s;
+}
+
 
 /*------------------------------------------------media query------*/
 @media only screen and (max-width: 1200px) {

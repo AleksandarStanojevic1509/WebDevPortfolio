@@ -18,16 +18,29 @@
     />
   </head>
   <body>
-      <!-- to-top -->
-      <a href="#" id="to-top"><i class="fas fa-chevron-circle-up"></i></a>
+    <!-- to-top -->
+    <a href="#" id="to-top"><i class="fas fa-chevron-circle-up"></i></a>
+
+    <!-- ABOUT ME -->
+    <div id="about-me-box">
+      <i class="fas fa-reply"></i>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div id="contact-me-box">
+      <i class="fas fa-reply"></i>
+
+    </div>
 
     <div id="wrapper">
       <div id="menu">
         <ul>
           <li><a href="">Home</a></li>
           <li><a href="">Portfolio</a></li>
-          <li><a href="">About Me</a></li>
-          <li><a href="">Contact Me</a></li>
+          <li id="about-dropdown"><a href="">About Me</a></li>
+          <li id="contract-dropdown"><a href="">Contact Me</a></li>
         </ul>
       </div>
 
@@ -46,9 +59,9 @@
         id="text-box-1"
         style="background-color: var(--main-color2);"
       >
-      <span><h3>HI THERE, </h3></span>
-      <span><h3>I AM ALEKSANDAR</h3></span>
-      <span><h3>AND THIS IS MY ONLINE PORTFOLIO</h3></span>
+      <h3>HI THERE,</h3>
+      <h3>I AM ALEKSANDAR</h3>
+      <h3>AND THIS IS MY ONLINE PORTFOLIO.</h3>
     </div>
       <div
         class="flex-main cursor"
@@ -116,7 +129,8 @@
       <div
         class="flex-main remove-md"
         style="background-color: var(--main-color4);"
-      ></div>
+      >
+      </div>
 
       <div
         class="flex-main remove-md"
@@ -138,7 +152,7 @@
 
       <div
         id="contact"
-        class="flex-main cursor"
+        class="flex-main cursor contact-open"
         style="background-color: var(--main-color2);"
       >
         <i class="fas fa-paper-plane size60"></i>
