@@ -28,7 +28,7 @@
         <h1 class="heading-style"><span>Who am I ?</span></h1>
         <div>
           <div id="img-box">
-            <img src="/public/img/portrait.jpg" alt="">
+            <img src="img/portrait.jpg" alt="">
           </div>
           <div id="text-box">
             <p>&emsp;Hi, my name is Aleksandar Stanojević, web developer beginner based in Niš, Serbia.
@@ -49,7 +49,27 @@
         <div>
           <h1 class="heading-style"><span>My skills are:</span></h1>
         </div>
-        <div>
+        <div id="skills-box">
+          <div class="card">
+            <img class="card-img" src="logo/html.png" alt="HTML">
+            <button class="card-btn"><a href="https://www.udemy.com/certificate/UC-a9aad5f9-67fa-416a-8d1f-bfb4899ed5d8/" target="_blank">Find more...</a></button>
+          </div>
+          <div class="card">
+            <img class="card-img" src="logo/css.png" alt="HTML">
+            <button class="card-btn"><a href="https://www.udemy.com/certificate/UC-a9aad5f9-67fa-416a-8d1f-bfb4899ed5d8/" target="_blank">Find more...</a></button>
+          </div>
+          <div class="card">
+            <img class="card-img" src="logo/js.png" alt="HTML">
+            <button class="card-btn"><a href="https://www.udemy.com/certificate/UC-3c02611a-25dd-42a3-8022-2de782debde5/" target="_blank">Find more...</a></button>
+          </div>
+          <div class="card">
+            <img class="card-img" src="logo/b-m.png" alt="HTML">
+            <button class="card-btn" style="padding: 3px 0;"  disabled>Find more...</button>
+          </div>
+          <div class="card">
+            <img class="card-img" src="logo/ps.png"alt="HTML">
+            <button class="card-btn" style="padding: 3px 0;"  disabled>Find more...</button>
+          </div>
           
         </div>
       </div>
@@ -61,36 +81,115 @@
 
     </div>
 
-    <!-- RENDER WEB -->
+    <!-- WEB -->
 
     <div id="web-sites-box">
       <i class="fas fa-reply"></i>
-      <div>
-        <h1 class="heading-style"><span>Web Sites:</span></h1>
-      </div>
       <div id="single-web-page">
-        <div  id="web-info">
-
-        </div>
-
-        <div id="web-carousel">
-          <div id="carousel-view" style="background-color: burlywood;">            
-              <img class="slide fade" src="/public/img/portfolio/ex-01.jpg" style="display: block;" alt="">        
-              <img class="slide fade" src="/public/img/portfolio/ex-02.jpg" style="display: none;" alt="">
-              <img class="slide fade" src="/public/img/portfolio/ex-03.jpg" style="display: none;" alt="">
-              <img class="slide fade" src="/public/img/portfolio/ex-04.jpg" style="display: none;" alt="">
+        <div id="web-info">         
+          <h1>GymFit</h1>
+          <h3>Project info:</h3>
+          <ul>
+            <li>HTML, CSS, JS</li>
+            <li>Bootstrap 4</li>
+            <li>Responisve</li>
+          </ul>
+          <div class="btn-box">
+            <a href="#">Live Version</a>
+            <button>View Project</button>
+            <a href="https://github.com/AleksandarStanojevic1509/GymFit" target="_blank">GitHub Repo</a>
           </div>
-          <div id="prev">
+        </div>        
+        <div id="web-carousel">
+          <div id="web-carousel-view" >            
+              <img class="slide fade web-shift" src="img/portfolio/gym-01.png" style="display: block;" alt="">        
+              <img class="slide fade web-shift" src="img/portfolio/ex-02.jpg" style="display: none;" alt="">
+              <img class="slide fade web-shift" src="img/portfolio/ex-03.jpg" style="display: none;" alt="">
+          </div>
+          <div id="prev-web">
             <i class="fas fa-chevron-left"></i>
           </div>
-          <div id="next">
+          <div id="next-web">
             <i  class="fas fa-chevron-right"></i>
           </div>
         </div>
-      </div>
-
-    
+      </div>    
     </div>
+
+    <!-- GAME -->
+
+    <div id="game-box">
+      <i class="fas fa-reply"></i>
+      <div id="single-game-page">
+        <div id="game-info">         
+          <h1>javaScript Quizz</h1>
+          <h3>Project info:</h3>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+          </ul>
+          <div class="btn-box">
+            <a href="#">Live Version</a>
+            <button>View Project</button>
+            <a href="https://github.com/AleksandarStanojevic1509/JavaScript-Quizz" target="_blank">GitHub Repo</a>
+          </div>
+        </div>        
+        <div id="game-carousel">
+          <div id="game-carousel-view" >            
+              <img class="slide fade game-shift" src="img/portfolio/quizz-01.png" style="display: block;" alt="">        
+              <img class="slide fade game-shift" src="img/portfolio/ex-02.jpg" style="display: none;" alt="">
+              <img class="slide fade game-shift" src="img/portfolio/pig-01.png" style="display: none;" alt="">
+              <img class="slide fade game-shift" src="img/portfolio/ex-04.jpg" style="display: none;" alt="">
+
+          </div>
+          <div id="prev-game">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div id="next-game">
+            <i  class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>    
+    </div>
+
+<!-- APP -->
+
+<div id="app-box">
+  <i class="fas fa-reply"></i>
+  <div id="single-app-page">
+    <div id="app-info">         
+      <h1>Calculator</h1>
+      <h3>Project info:</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+      </ul>
+      <div class="btn-box">
+        <a href="#">Live Version</a>
+        <button>View Project</button>
+        <a href="https://github.com/AleksandarStanojevic1509/Calculator" target="_blank">GitHub Repo</a>
+      </div>
+    </div>        
+    <div id="app-carousel">
+      <div id="app-carousel-view" >            
+          <img class="slide fade app-shift" src="img/portfolio/calc-01.png" style="display: block;" alt="">        
+          <img class="slide fade app-shift" src="img/portfolio/planner-01.png" style="display: none;" alt="">
+          <img class="slide fade app-shift" src="img/portfolio/currency-01.png" style="display: none;" alt="">
+          <img class="slide fade app-shift" src="img/portfolio/wheater-01.png" style="display: none;" alt="">
+          <img class="slide fade app-shift" src="img/portfolio/cov-01.png" style="display: none;" alt="">
+      </div>
+      <div id="prev-app">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div id="next-app">
+        <i  class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>    
+</div>
+
 
 
     <!-- MAIN PART -->
@@ -151,7 +250,7 @@
           <i class="fab fa-edge size40"></i>
           <i class="fab fa-safari size40"></i>
         </div>
-        <h4>Web Sites</h4>
+        <h4>Web Site</h4>
       </div>
 
       <div
@@ -175,7 +274,7 @@
       ></div>
 
       <div
-        id="glow-ef"
+        id="app"
         class="flex-main cursor"
         style="background-color: var(--main-color1);"
       >
@@ -183,7 +282,7 @@
           <i class="fab fa-medapps size60"></i>
           <div id="glow"></div>
         </div>
-        <h4>User Apps</h4>
+        <h4>User App</h4>
       </div>
 
       <div
@@ -203,7 +302,7 @@
         style="background-color: var(--main-color3);"
       >
         <i class="fas fa-gamepad size60"></i>
-        <h4>Games</h4>
+        <h4>Game</h4>
       </div>
       <div
         class="flex-main remove-md"
