@@ -7,7 +7,28 @@ const closePage  = (page) =>{
     page.style.display = "none";
   }, 900);
 }
+const closeBox  = (page, title) =>{
+  page.style.animation = "backOutRight 3s";
+  setTimeout(() => {
+    page.style.display = "none";
+    title.innerHTML = '';
+  }, 900);
+}
 
+const renderInfo = (title, firstEl, secondEl, thirdEl, gitRepo, live) =>{
+  return `<h1>${title}</h1>
+  <h3>Project info:</h3>
+  <ul>
+    <li>${firstEl}</li>
+    <li>${secondEl}</li>
+    <li>${thirdEl}</li>
+  </ul>
+  <div class="btn-box">
+    <a href="${live}" target="_blank">Live Version</a>
+    <button>View Project</button>
+    <a href="${gitRepo}" target="_blank">GitHub Repo</a>
+  </div>`
+}
 
 const menuOpenHandler = document.getElementById("menu-icon-open");
 const menuCloseHandler = document.getElementById("menu-icon-close");
@@ -18,8 +39,10 @@ const aboutHendler = document.getElementById("about-me");
 const aboutDropdownHendler = document.getElementById('about-dropdown');
 const contactHendler = document.getElementById("contact");
 const contactDropdownHendler = document.getElementById("contract-dropdown");
+const portfolioDropdownHandler = document.getElementById('portfolio-dropdown')
 const mainWrapper = document.getElementById('wrapper');
 const aboutBox = document.getElementById('about-me-box');
+const portfolioBox = document.getElementById('portfolio-box');
 const webSitesHandler = document.getElementById('web');
 const gameHandler = document.getElementById('games');
 const appHandler = document.getElementById('app')
@@ -29,8 +52,10 @@ const nextBtnHandlerApp = document.getElementById('next-app');
 const prevBtnHandlerApp = document.getElementById('prev-app');
 const nextBtnHandlerGame = document.getElementById('next-game');
 const prevBtnHandlerGame = document.getElementById('prev-game');
+const infoBox = document.querySelectorAll(".info")
 
 // console.log()
+let slideCounter = 1;
 
 menuOpenHandler.addEventListener("click", () => {
   menuOpenHandler.style.display = "none";
@@ -72,6 +97,21 @@ aboutDropdownHendler.addEventListener("click", (elem) => {
   menuOpenHandler.style.display = "block";
 });
 
+// porfolio
+portfolioDropdownHandler.addEventListener('click', (elem)=>{
+  elem.preventDefault();
+  window.scrollTo(0, 0);
+  setTimeout(()=>{
+    mainWrapper.style.display = 'none';
+  },1010);
+  // aboutBox.innerHTML = renderAboutBox();
+  document.getElementById("portfolio-box").style.display = "flex";
+  document.getElementById("portfolio-box").style.animation = "backInDown 1s";
+  menu.style.display = "none";
+  menuCloseHandler.style.display = "none";
+  menuOpenHandler.style.display = "block";
+})
+
 // Contact
 contactHendler.addEventListener("click", () => {
   setTimeout(()=>{
@@ -105,6 +145,14 @@ webSitesHandler.addEventListener("click", () => {
   window.scrollTo(0, 0);
   document.getElementById("web-sites-box").style.display = "grid";
   document.getElementById("web-sites-box").style.animation = "backInDown 1s";
+  document.querySelector('#web-info h1').innerHTML = `GymFit`;
+  document.getElementById("web-carousel-view").innerHTML = `<img class="slide fade web-shift" src="img/portfolio/gym-01.png" style="display: block;" alt="">        
+  <img class="slide fade web-shift" src="img/portfolio/house-01.png" style="display: none;" alt="">
+  <img class="slide fade web-shift" src="img/portfolio/portfolio-01.png" style="display: none;" alt="">`;
+  nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/house-01.png")`;
+    prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/portfolio-01.png")`;
+
+
 });
 
 //  Game
@@ -115,6 +163,14 @@ gameHandler.addEventListener("click", () => {
   window.scrollTo(0, 0);
   document.getElementById("game-box").style.display = "grid";
   document.getElementById("game-box").style.animation = "backInDown 1s";
+  document.querySelector('#game-info h1').innerHTML = `javaScript Quizz`;
+  document.getElementById("game-carousel-view").innerHTML = `  <img class="slide fade game-shift" src="img/portfolio/quizz-01.png" style="display: block;" alt="">        
+  <img class="slide fade game-shift" src="img/portfolio/rps-01.png" style="display: none;" alt="">
+  <img class="slide fade game-shift" src="img/portfolio/pig-01.png" style="display: none;" alt="">
+  <img class="slide fade game-shift" src="img/portfolio/geo-01.png" style="display: none;" alt="">`;
+  nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/rps-01.png")`;
+  prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/geo-01.png")`;
+
 });
 
 //  App
@@ -125,6 +181,15 @@ appHandler.addEventListener("click", () => {
   window.scrollTo(0, 0);
   document.getElementById("app-box").style.display = "grid";
   document.getElementById("app-box").style.animation = "backInDown 1s";
+  document.querySelector('#app-info h1').innerHTML = `Calculator`;
+  document.getElementById("app-carousel-view").innerHTML = `<img class="slide fade app-shift" src="img/portfolio/calc-01.png" style="display: block;" alt="">        
+  <img class="slide fade app-shift" src="img/portfolio/planner-01.png" style="display: none;" alt="">
+  <img class="slide fade app-shift" src="img/portfolio/currency-01.png" style="display: none;" alt="">
+  <img class="slide fade app-shift" src="img/portfolio/wheater-01.png" style="display: none;" alt="">
+  <img class="slide fade app-shift" src="img/portfolio/cov-01.png" style="display: none;" alt="">`;
+  nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/planner-01.png")`;
+    prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/cov-01.png")`;
+
 });
 
 
@@ -140,14 +205,20 @@ returnHandler.forEach((elem) => {
     if (document.getElementById("contact-me-box").style.display === "grid") {
       closePage(document.getElementById("contact-me-box"));
     }
+    if (document.getElementById("portfolio-box").style.display === "flex") {
+      closePage(document.getElementById("portfolio-box"));
+    }
     if (document.getElementById("web-sites-box").style.display === "grid") {
-      closePage(document.getElementById("web-sites-box"));
+      // slideCounter = 1;
+      closeBox(document.getElementById("web-sites-box"), document.querySelector('#web-info h1'));
     };
     if (document.getElementById("game-box").style.display === "grid") {
-      closePage(document.getElementById("game-box"));
+      // slideCounter = 1;
+      closeBox(document.getElementById("game-box"), document.querySelector('#game-info h1'));
     };
     if (document.getElementById("app-box").style.display === "grid") {
-      closePage(document.getElementById("app-box"));
+      // slideCounter = 1;
+      closeBox(document.getElementById("app-box"), document.querySelector('#app-info h1'));
     };
   });
 });
@@ -166,7 +237,6 @@ document.addEventListener("scroll", (event) => {
 
 
 // WEB RENDER
-let slideCounter = 1;
 
 let displaySlide = (num, shift) =>{
   let i;
@@ -187,20 +257,7 @@ let shiftSlide = (num, shift)=>{
   displaySlide(slideCounter += num, shift);
 }
 
-const renderInfo = (title, firstEl, secondEl, thirdEl, gitRepo, live) =>{
-  return `<h1>${title}</h1>
-  <h3>Project info:</h3>
-  <ul>
-    <li>${firstEl}</li>
-    <li>${secondEl}</li>
-    <li>${thirdEl}</li>
-  </ul>
-  <div class="btn-box">
-    <a href="${live}" target="_blank">Live Version</a>
-    <button>View Project</button>
-    <a href="${gitRepo}" target="_blank">GitHub Repo</a>
-  </div>`
-}
+
 
 const resetAnimation = (id) =>{
   setTimeout(()=>{
@@ -211,14 +268,14 @@ const resetAnimation = (id) =>{
 // web shifters
 const shiftPrevNextWeb = () =>{
   if(slideCounter === 1){
-    nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/ex-02.jpg")`;
-    prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/ex-03.jpg")`;
+    nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/house-01.png")`;
+    prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/portfolio-01.png")`;
     document.getElementById('web-info').style.animation = 'fadeIn 1s'
     document.getElementById('web-info').innerHTML = renderInfo(`GymFit`, `HTML, CSS, JS`, `Bootstrap 4`, `Responsive`, `https://github.com/AleksandarStanojevic1509/GymFit`, `#`)
     resetAnimation('web-info')
   }
   if(slideCounter === 2){
-    nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/ex-03.jpg")`;
+    nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/portfolio-01.png")`;
     prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/gym-01.png")`;
     document.getElementById('web-info').style.animation = 'fadeIn 1s'
     document.getElementById('web-info').innerHTML = renderInfo(`the h<span><i class="fas fa-home"></i></span>use`, `HTML, CSS, JS`, `Bootstrap 4, Responsive`, `Firebase`, `https://github.com/AleksandarStanojevic1509/theHouse`, `#`)
@@ -226,9 +283,9 @@ const shiftPrevNextWeb = () =>{
   }
   if(slideCounter === 3){
     nextBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/gym-01.png")`;
-    prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/ex-02.jpg")`;
+    prevBtnHandlerWeb.style.backgroundImage = `url("img/portfolio/house-01.png")`;
     document.getElementById('web-info').style.animation = 'fadeIn 1s'
-    document.getElementById('web-info').innerHTML = renderInfo(`Portfolio`,`HTML, CSS, JS`, `Bootstrap 4`, `Responsive`, `#`, `#`)
+    document.getElementById('web-info').innerHTML = renderInfo(`Portfolio`,`HTML, CSS, JS`, `Bootstrap 4`, `Responsive`, `https://github.com/AleksandarStanojevic1509/Portfolio-Template`, `#`)
     resetAnimation('web-info')
   }
 }
@@ -236,29 +293,29 @@ const shiftPrevNextWeb = () =>{
 // game shifters
 const shiftPrevNextGame = () =>{
   if(slideCounter === 1){
-    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-02.jpg")`;
-    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-04.jpg")`;
+    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/rps-01.png")`;
+    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/geo-01.png")`;
     document.getElementById('game-info').style.animation = 'fadeIn 1s'
     document.getElementById('game-info').innerHTML = renderInfo(`javaScript Quizz`, `HTML`, `CSS`, `JS`, `https://github.com/AleksandarStanojevic1509/JavaScript-Quizz`, `#`)
     resetAnimation('game-info')
   }
   if(slideCounter === 2){
-    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-03.jpg")`;
-    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-01.jpg")`;
+    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/pig-01.png")`;
+    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/quizz-01.png")`;
     document.getElementById('game-info').style.animation = 'fadeIn 1s'
-    document.getElementById('game-info').innerHTML = renderInfo(`PaperRockScissors`, `HTML, CSS, JS`, `socket.io`, `node.js`, `https://github.com/AleksandarStanojevic1509/RockPaperScissors`, `#`)
+    document.getElementById('game-info').innerHTML = renderInfo(`Paper Rock Scissors`, `HTML, CSS, JS`, `socket.io`, `node.js`, `https://github.com/AleksandarStanojevic1509/RockPaperScissors`, `#`)
     resetAnimation('game-info')
   }
   if(slideCounter === 3){
-    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-04.jpg")`;
-    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-02.jpg")`;
+    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/geo-01.png")`;
+    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/rps-01.png")`;
     document.getElementById('game-info').style.animation = 'fadeIn 1s'
     document.getElementById('game-info').innerHTML = renderInfo(`Pig Game`,`HTML`, `CSS`, `JS`, `https://github.com/AleksandarStanojevic1509/PigGame`, `#`)
     resetAnimation('game-info')
   }
   if(slideCounter === 4){
-    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-01.jpg")`;
-    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/ex-03.jpg")`;
+    nextBtnHandlerGame.style.backgroundImage = `url("img/portfolio/quizz-01.png")`;
+    prevBtnHandlerGame.style.backgroundImage = `url("img/portfolio/pig-01.png")`;
     document.getElementById('game-info').style.animation = 'fadeIn 1s'
     document.getElementById('game-info').innerHTML = renderInfo(`Zanimljiva Geografija`,`HTML, CSS, JS`, `Materialize, Responsive`, `socket.io, node.js`, `https://github.com/AleksandarStanojevic1509/ZanimljivaGeografija`, `https://zanimljivageografija-f1e43.firebaseapp.com/`)
     resetAnimation('game-info')
@@ -338,7 +395,90 @@ prevBtnHandlerGame.addEventListener('click', () => {
   shiftPrevNextGame();  
 })
 
+const addImgToDisplayBox = (id,path) =>{
+  for (let i = 1; i < 5; i++){
+    document.getElementById(id).innerHTML += `<img class="img-project" src="img/portfolio/${path}${i}.png"alt="">`;
+  }
+}
 
+
+// PROJECT INFO BOX
+infoBox.forEach(elem=>{
+  elem.addEventListener('click', (event)=>{
+    window.scrollTo(0, 0);
+    if(event.target.tagName === "BUTTON"){
+      document.getElementById('display-box').style.display = 'block';
+      document.getElementById('display-box').style.animation = 'fadeIn 1s';
+      // web
+      if(document.querySelector('#web-info h1').innerHTML === 'GymFit'){
+        addImgToDisplayBox('display-project', "gym-prev-0" );
+      }
+      if(document.querySelector('#web-info h1').innerHTML === 'the h<span><i class="fas fa-home"></i></span>use'){
+        addImgToDisplayBox('display-project', "house-prev-0" );
+      }
+      if(document.querySelector('#web-info h1').innerHTML === 'Portfolio'){
+        addImgToDisplayBox('display-project', "port-prev-0" );
+      }
+      // game
+      if(document.querySelector('#game-info h1').innerHTML === 'javaScript Quizz'){
+        addImgToDisplayBox('display-project', "quizz-prev-0" );
+      }
+      if(document.querySelector('#game-info h1').innerHTML === 'Paper Rock Scissors'){
+        addImgToDisplayBox('display-project', "rps-prev-0" );
+      }
+      if(document.querySelector('#game-info h1').innerHTML === 'Pig Game'){
+        addImgToDisplayBox('display-project', "pig-prev-0" );
+      }
+      if(document.querySelector('#game-info h1').innerHTML === 'Zanimljiva Geografija'){
+        addImgToDisplayBox('display-project', "geo-prev-0" );
+      }
+      // app
+      if(document.querySelector('#app-info h1').innerHTML === 'Calculator'){
+        addImgToDisplayBox('display-project', "calculator-prev-0" );
+      }
+      if(document.querySelector('#app-info h1').innerHTML === 'Daily Planner'){
+        addImgToDisplayBox('display-project', "planner-prev-0" );
+      }
+      if(document.querySelector('#app-info h1').innerHTML === 'Currency Calculator'){
+        addImgToDisplayBox('display-project', "currency-prev-0" );
+      }
+      if(document.querySelector('#app-info h1').innerHTML === 'Simple Weather App'){
+        addImgToDisplayBox('display-project', "weather-prev-0" );
+      }
+      if(document.querySelector('#app-info h1').innerHTML === 'Covid-19 Table'){
+        addImgToDisplayBox('display-project', "covid-prev-0" );
+      }
+    }
+  })
+})
+
+// close info box
+document.querySelector('.fa-times').addEventListener('click', ()=>{
+  document.getElementById('display-project').innerHTML = ''
+  document.getElementById('display-box').style.animation = 'fadeOut 1s'
+  setTimeout(()=>{
+    document.getElementById('display-box').style.display = 'none'
+  },1001)
+
+
+})
+
+
+document.querySelectorAll('.btn-web').forEach(elem=>{
+  elem.addEventListener('click',event=>{
+    webSitesHandler.click()
+  })
+})
+document.querySelectorAll('.btn-app').forEach(elem=>{
+  elem.addEventListener('click',event=>{
+    appHandler.click()
+  })
+})
+document.querySelectorAll('.btn-game').forEach(elem=>{
+  elem.addEventListener('click',event=>{
+    gameHandler.click()
+  })
+})
 
 // const renderAboutBox = () =>{
 //   return `     <i class="fas fa-reply"></i>

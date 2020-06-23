@@ -14,6 +14,7 @@ html {
 }
 body {
   font-family: "Montserrat", sans-serif !important;
+  background-color: var(--main-color4);
 }
 
 #wrapper {
@@ -72,7 +73,7 @@ h4::after{
   transition: width .5s ease, background-color .5s ease;
 }
 #web:hover h4::after,
-#glow-ef:hover h4::after{
+#app:hover h4::after{
   width: 100%;
   border-radius: 3px;
   background: var(--main-color3);
@@ -300,31 +301,49 @@ h4 {
 #to-top:hover{
   color: var(--main-color1);
   cursor: pointer;
--webkit-text-stroke: 0.07rem var(--main-color4) !important;
+  -webkit-text-stroke: 0.07rem var(--main-color4) !important;
 }
 
 
 /* ABOUT BOX */
 
 
-#about-me-box, #contact-me-box{
+#about-me-box, #contact-me-box, #portfolio-box{
   position: absolute;
   z-index: 99;  
   display: none;
   width: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   background-color: var(--main-color4);
-
 }
-
+#portfolio-box{
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: unset;
+}
+#portfolio-box h1, #portfolio-box h5{
+  text-align: center;
+}
+#portfolio-box h1{
+  margin-top: 2rem;
+}
+#portfolio-web, #portfolio-app, #portfolio-games{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
 #about-me-box{
   grid-template-rows: 1fr 1fr;
   
 }
 
 .fa-reply{
-  /* position: absolute; */
-  position: fixed;
+  position: absolute;
+  /* position: fixed; */
   top: 0;
   left: 0;
   color: var(--main-color3);
@@ -411,7 +430,26 @@ padding: 10px;
 }
 
 
+/* CONTACT */
+#contact-me-box {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+#contact-me-box ul{
+  list-style-type: none;
+}
+#contact-me-box ul i{
+  color: var(--main-color1);
+  font-size: 2rem;
 
+}
+#contact-me-box ul li, #contact-me-box ul li a{
+  font-size: 1.5rem;
+  margin: .5rem 0;
+  text-decoration: none;
+  color: var(--main-color2);
+}
 
 /* RENDER WEB */
 
@@ -518,7 +556,7 @@ padding: 10px;
 }
 #prev-web{
   grid-column: 1/2;
-  background-image: url("img/portfolio/ex-04.jpg");
+  background-image: url("img/portfolio/house-01.png");
 }
 #prev-app{
   grid-column: 1/2;
@@ -526,12 +564,12 @@ padding: 10px;
 }
 #prev-game{
   grid-column: 1/2;
-  background-image: url("img/portfolio/ex-04.jpg");
+  background-image: url("img/portfolio/geo-01.png");
 }
 
 #next-web{
   grid-column: 2/3;
-  background-image: url("img/portfolio/ex-02.jpg");
+  background-image: url("img/portfolio/portfolio-01.png");
 }
 #next-app{
   grid-column: 2/3;
@@ -539,7 +577,7 @@ padding: 10px;
 }
 #next-game{
   grid-column: 2/3;
-  background-image: url("img/portfolio/ex-02.jpg");
+  background-image: url("img/portfolio/rps-01.png");
 }
 
 
@@ -560,8 +598,11 @@ padding: 10px;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+#my-skills h1{
+  margin: 2rem 0 1rem
+}
 .card{
-  width: 11rem;
+  width: 10rem;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--main-color2);
@@ -604,6 +645,49 @@ padding: 10px;
   animation-duration: 1s;
 }
 
+#display-box{
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(194, 194, 194, 0.329);
+  height: 100vh;
+  /* overflow: scroll;
+  right: 0; */
+  z-index: 998;
+}
+#display-project{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 60%;
+  background-color: var(--main-color3);
+  height: 100vh;
+  overflow: scroll;
+  right: 0;
+  z-index: 999;
+  align-items: center;
+}
+.fa-times{
+  position: absolute;
+  /* position: fixed; */
+  top: 0;
+  right: 0;
+  color: var(--main-color4);
+  -webkit-text-stroke: 3px var(--main-color1) !important;
+  font-size: 3rem;
+  margin: 1rem 1.5rem 1rem 1rem;
+  z-index: 9;
+}
+.fa-times:hover{
+  animation: heartBeat 3s;
+}
+.img-project{
+  width: 100%;
+  /* margin: 1rem 0; */
+}
+
+
+/*------------------------------------------------keyframes------*/
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
@@ -674,6 +758,9 @@ padding: 10px;
   #who-am-I, #my-skills, #single-web-page, #web-sites-box h1 {
     width: 90%;
   }
+  #display-project{
+    width: 75%;
+  }
 
 }
 
@@ -703,6 +790,20 @@ padding: 10px;
   }
   .heading-style span {
     font-size: 2rem;
-     padding: 0 10px;
-   }
+    padding: 0 10px;
+  }
+  #single-app-page, #single-game-page, #single-web-page{
+    display: flex;
+    flex-direction: column-reverse;
+    height: unset;
+  }
+  .slide{
+    width: 100%;
+  }
+  #app-carousel-view, #game-carousel-view, #web-carousel-view{
+    height: unset;
+  }
+  #display-project{
+    width: 90%;
+  }
 }
