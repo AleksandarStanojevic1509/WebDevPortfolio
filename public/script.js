@@ -7,11 +7,13 @@ const closePage  = (page) =>{
     page.style.display = "none";
   }, 900);
 }
-const closeBox  = (page, title) =>{
+const closeBox  = (page, title, livebtn, liveLink, gitbtn, gitLink) =>{
   page.style.animation = "backOutRight 3s";
   setTimeout(() => {
     page.style.display = "none";
     title.innerHTML = '';
+    livebtn.setAttribute("href", liveLink);
+    gitbtn.setAttribute("href", gitLink);
   }, 900);
 }
 
@@ -24,9 +26,9 @@ const renderInfo = (title, firstEl, secondEl, thirdEl, gitRepo, live) =>{
     <li>${thirdEl}</li>
   </ul>
   <div class="btn-box">
-    <a href="${live}" target="_blank">Live Version</a>
+    <a class="live-btn" href="${live}" target="_blank">Live Version</a>
     <button>View Project</button>
-    <a href="${gitRepo}" target="_blank">GitHub Repo</a>
+    <a class="github-btn" href="${gitRepo}" target="_blank">GitHub Repo</a>
   </div>`
 }
 
@@ -210,15 +212,15 @@ returnHandler.forEach((elem) => {
     }
     if (document.getElementById("web-sites-box").style.display === "grid") {
       // slideCounter = 1;
-      closeBox(document.getElementById("web-sites-box"), document.querySelector('#web-info h1'));
+      closeBox(document.getElementById("web-sites-box"), document.querySelector('#web-info h1'), document.querySelector('#web-sites-box .live-btn'), '#', document.querySelector('#web-sites-box .github-btn'), 'https://github.com/AleksandarStanojevic1509/GymFit');
     };
     if (document.getElementById("game-box").style.display === "grid") {
       // slideCounter = 1;
-      closeBox(document.getElementById("game-box"), document.querySelector('#game-info h1'));
+      closeBox(document.getElementById("game-box"), document.querySelector('#game-info h1'), document.querySelector('#game-box .live-btn'), '#', document.querySelector('#game-box .github-btn'), 'https://github.com/AleksandarStanojevic1509/JavaScript-Quizz');
     };
     if (document.getElementById("app-box").style.display === "grid") {
       // slideCounter = 1;
-      closeBox(document.getElementById("app-box"), document.querySelector('#app-info h1'));
+      closeBox(document.getElementById("app-box"), document.querySelector('#app-info h1'), document.querySelector('#app-box .live-btn'), 'https://user-apps-128ff.web.app/calculator/index.html', document.querySelector('#app-box .github-btn'), 'https://github.com/AleksandarStanojevic1509/Calculator');
     };
   });
 });
@@ -329,35 +331,35 @@ const shiftPrevNextApp = () =>{
     nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/planner-01.png")`;
     prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/cov-01.png")`;
     document.getElementById('app-info').style.animation = 'fadeIn 1s'
-    document.getElementById('app-info').innerHTML = renderInfo(`Calculator`, `HTML`, `CSS`, `JS`, `https://github.com/AleksandarStanojevic1509/Calculator`, `#`)
+    document.getElementById('app-info').innerHTML = renderInfo(`Calculator`, `HTML`, `CSS`, `JS`, `https://github.com/AleksandarStanojevic1509/Calculator`, `https://user-apps-128ff.web.app/calculator/index.html`)
     resetAnimation('app-info')
   }
   if(slideCounter === 2){
     nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/currency-01.png")`;
     prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/calc-01.png")`;
     document.getElementById('app-info').style.animation = 'fadeIn 1s'
-    document.getElementById('app-info').innerHTML = renderInfo(`Daily Planner`, `HTML, CSS, JS`, `Bootstrap 4, Responsive`, `indexedDB, dexie.js`, `https://github.com/AleksandarStanojevic1509/DailyPlanner`, `#`)
+    document.getElementById('app-info').innerHTML = renderInfo(`Daily Planner`, `HTML, CSS, JS`, `Bootstrap 4, Responsive`, `indexedDB, dexie.js`, `https://github.com/AleksandarStanojevic1509/DailyPlanner`, `https://user-apps-128ff.web.app/dailyPlanner/index.html`)
     resetAnimation('app-info')
   }
   if(slideCounter === 3){
     nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/wheater-01.png")`;
     prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/planner-01.png")`;
     document.getElementById('app-info').style.animation = 'fadeIn 1s'
-    document.getElementById('app-info').innerHTML = renderInfo(`Currency Calculator`,`HTML, CSS`, `JS`, `REST API`, `https://github.com/AleksandarStanojevic1509/CurrencyCalculator`, `#`)
+    document.getElementById('app-info').innerHTML = renderInfo(`Currency Calculator`,`HTML, CSS`, `JS`, `REST API`, `https://github.com/AleksandarStanojevic1509/CurrencyCalculator`, `https://user-apps-128ff.web.app/currencyCalculator/index.html`)
     resetAnimation('app-info')
   }
   if(slideCounter === 4){
     nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/cov-01.png")`;
     prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/currency-01.png")`;
     document.getElementById('app-info').style.animation = 'fadeIn 1s'
-    document.getElementById('app-info').innerHTML = renderInfo(`Simple Weather App`,`HTML, CSS, JS`, `Bootstrap 4, Responsive`, `REST API`, `https://github.com/AleksandarStanojevic1509/SimpleWeatherApp`, `#`)
+    document.getElementById('app-info').innerHTML = renderInfo(`Simple Weather App`,`HTML, CSS, JS`, `Bootstrap 4, Responsive`, `REST API`, `https://github.com/AleksandarStanojevic1509/SimpleWeatherApp`, `https://user-apps-128ff.web.app/simpleWeatherApp/index.html`)
     resetAnimation('app-info')
   }
   if(slideCounter === 5){
     nextBtnHandlerApp.style.backgroundImage = `url("img/portfolio/calc-01.png")`;
     prevBtnHandlerApp.style.backgroundImage = `url("img/portfolio/wheater-01.png")`;
     document.getElementById('app-info').style.animation = 'fadeIn 1s'
-    document.getElementById('app-info').innerHTML = renderInfo(`Covid-19 Table`,`HTML, CSS, JS`, `Bootstrap 4, Responsive`, `REST API`,  `https://github.com/AleksandarStanojevic1509/Covid-19-table`, `#`)
+    document.getElementById('app-info').innerHTML = renderInfo(`Covid-19 Table`,`HTML, CSS, JS`, `Bootstrap 4, Responsive`, `REST API`,  `https://github.com/AleksandarStanojevic1509/Covid-19-table`, `https://user-apps-128ff.web.app/covidTable/index.html`)
     resetAnimation('app-info')
   }
 }
